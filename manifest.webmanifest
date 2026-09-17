@@ -1,0 +1,11 @@
+{
+  "name": "GTIN — дата на упаковку",
+  "short_name": "GTIN",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#0f172a",
+  "orientation": "portrait"
+}

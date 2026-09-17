@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>GTIN — дата маркировки</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">СКАНЕР GTIN</div>
+        <h1>Дата на упаковку</h1>
+      </div>
+      <button id="syncBtn" class="icon-btn" type="button" aria-label="Обновить справочник" title="Обновить справочник">
+        ↻
+      </button>
+    </header>
+
+    <section class="db-status">
+      <span id="dbDot" class="dot"></span>
+      <span id="dbText">Загрузка локального справочника…</span>
+    </section>
+
+    <section class="scanner-card">
+      <div class="video-wrap">
+        <video id="video" playsinline muted></video>
+
+        <div class="scan-overlay" aria-hidden="true">
+          <div class="scan-frame">
+            <div class="scan-line"></div>
+          </div>
+        </div>
+
+        <div id="cameraPlaceholder" class="camera-placeholder">
+          <div class="barcode-glyph">▥</div>
+          <div>Нажмите «Сканировать»</div>
+        </div>
+      </div>
+
+      <div class="camera-actions">
+        <button id="startBtn" class="primary-btn" type="button">Сканировать</button>
+        <button id="torchBtn" class="secondary-btn hidden" type="button">Фонарик</button>
+      </div>
+
+      <div id="scannerMode" class="scanner-mode"></div>
+    </section>
+
+    <section id="resultCard" class="result-card neutral" aria-live="polite">
+      <div id="resultLabel" class="result-label">Результат</div>
+      <div id="resultDate" class="result-date">—</div>
+      <div id="resultGtin" class="result-gtin">Наведите камеру на штрихкод</div>
+      <div id="resultStatus" class="result-status"></div>
+    </section>
+
+    <section class="manual-card">
+      <label for="manualGtin">Ручной ввод</label>
+      <div class="manual-row">
+        <input id="manualGtin" inputmode="numeric" autocomplete="off" placeholder="Введите GTIN">
+        <button id="manualBtn" type="button">Найти</button>
+      </div>
+    </section>
+
+    <footer>
+      <span id="footerInfo">Локальная база не загружена</span>
+    </footer>
+  </main>
+
+  <!-- Фиксируем версию, чтобы обновление библиотеки не ломало приложение. -->
+  <script src="https://unpkg.com/@zxing/browser@0.2.1"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
